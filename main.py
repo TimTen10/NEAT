@@ -10,3 +10,23 @@
 # There are several types of mutation: Add Connection, Add Node and change weight.
 
 # The Network will start as small as possible and will expand only through evolution.
+from genes.connection import Connection
+from genotype import Genotype
+
+
+def main():
+    c1 = Connection(1, 4)
+    c2 = Connection(2, 4)
+    c3 = Connection(3, 4)
+
+    g = Genotype()
+    g.add_connection(c1)
+    g.add_connection(c2)
+
+    print(c1.innov, c2.innov, c3.innov)
+    for gene in g.connection_genes:
+        print(gene)
+
+
+if __name__ == '__main__':
+    main()
