@@ -15,15 +15,26 @@ from genotype import Genotype
 
 
 def main():
-    c1 = Connection(1, 4)
-    c2 = Connection(2, 4)
-    c3 = Connection(3, 4)
+    g = Genotype(number_inputs=3, number_outputs=1)
 
-    g = Genotype()
-    g.add_connection(c1)
-    g.add_connection(c2)
+    for gene in g.node_genes:
+        print(gene)
+    for gene in g.connection_genes:
+        print(gene)
 
-    print(c1.innov, c2.innov, c3.innov)
+    g.split_connection(innov=2)
+    print()
+
+    for gene in g.node_genes:
+        print(gene)
+    for gene in g.connection_genes:
+        print(gene)
+
+    g.add_connection(in_node=1, out_node=5)
+    print()
+
+    for gene in g.node_genes:
+        print(gene)
     for gene in g.connection_genes:
         print(gene)
 
