@@ -29,10 +29,7 @@ class Genotype:
     def split_connection(self, innov):
         # Disable the old connection (it has to be enabled at first so a node can be added into it)
         disabled_connection = next(conn for conn in self.connection_genes if conn.innov == innov)
-        try:
-            disabled_connection.switch()
-        except StopIteration:
-            print(f'Innovation number {innov} is not contained in this genotype.')
+        disabled_connection.switch()
 
         # Create a new node that goes in between the two new connections
         new_node = n.Node('Hidden')

@@ -22,7 +22,7 @@ def main():
     for gene in g.connection_genes:
         print(gene)
 
-    g.split_connection(innov=2)
+    g.split_connection(innov=7)
     print()
 
     for gene in g.node_genes:
