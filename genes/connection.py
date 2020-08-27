@@ -3,6 +3,7 @@ class Connection:
     _id = 1
 
     def __init__(self, in_node, out_node, is_enabled=1, weight=1):
+        # TODO: in_node and out_node always ids!
         self.in_node = in_node
         self.out_node = out_node
         self.weight = weight
