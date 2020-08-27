@@ -13,9 +13,9 @@ class Genotype:
 
     def _fill_with_base_genes(self, number_in, number_out):
         # Create all input and output nodes
-        in_nodes = [n.Node('Input') for i in range(number_in)]
+        in_nodes = [n.Node('Input') for _ in range(number_in)]
         self.node_genes.extend(in_nodes)
-        out_nodes = [n.Node('Output') for o in range(number_out)]
+        out_nodes = [n.Node('Output') for _ in range(number_out)]
         self.node_genes.extend(out_nodes)
 
         # Create all connection between input and output nodes
@@ -29,8 +29,10 @@ class Genotype:
     def split_connection(self, innov):
         # Disable the old connection (it has to be enabled at first so a node can be added into it)
         disabled_connection = next(conn for conn in self.connection_genes if conn.innov == innov)
-        # TODO: still have to check if a split is even possible
-        disabled_connection.switch()
+        try:
+            disabled_connection.switch()
+        except StopIteration:
+            print(f'Innovation number {innov} is not contained in this genotype.')
 
         # Create a new node that goes in between the two new connections
         new_node = n.Node('Hidden')
