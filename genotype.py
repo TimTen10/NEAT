@@ -2,14 +2,27 @@ import genes.node as n
 import genes.connection as c
 import random
 
+
 class Genotype:
 
-    def __init__(self, number_inputs, number_outputs):
-        self.node_genes = []
-        self.connection_genes = []
+    def __init__(self, number_inputs=None, number_outputs=None, node_genes=None, connection_genes=None):
+        if node_genes:
+            self.node_genes = node_genes
+        else:
+            self.node_genes = []
+
+        if connection_genes:
+            self.connection_genes = connection_genes
+        else:
+            self.connection_genes = []
+
+        self.fitness = 0
+
         # TODO: both lists have to always be sorted by id / innov number!
 
-        self._fill_with_base_genes(number_inputs, number_outputs)
+        # If both needed parameters exist:
+        if number_inputs and number_outputs:
+            self._fill_with_base_genes(number_inputs, number_outputs)
 
     def _fill_with_base_genes(self, number_in, number_out):
         # Create all input and output nodes
