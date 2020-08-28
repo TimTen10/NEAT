@@ -1,6 +1,6 @@
 import genes.node as n
 import genes.connection as c
-
+import random
 
 class Genotype:
 
@@ -53,6 +53,11 @@ class Genotype:
         pass
 
     def evolve(self):
+        pass
+
+    def crossover(self, mate):
+        # Returns the new genotype
+        # import random has its usage here
         pass
 
     # TODO: need a nice way to __repr__ a genotype
